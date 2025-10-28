@@ -2,21 +2,18 @@
 let tasks = [
   { id: 1, name: "App-V Decommission", owner: "SysEng ClientEng", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
   { id: 2, name: "NPS Migration", owner: "Network", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
-  { id: 3, name: "Veeam Migration (5 servers)", owner: "SysEng Infra", dependencies: [2], roadblocks: [4], status: "roadblocked", comments: "" },
-  { id: 4, name: "Cohesity Expansion", owner: "SysEng Infra", dependencies: [3], roadblocks: [], status: "not-started", comments: "" },
-  { id: 5, name: "NTP Migration", owner: "SysEng Ops", dependencies: [4], roadblocks: [], status: "not-started", comments: "" },
-  { id: 6, name: "SnapCenter Migration na-snpctr-p1", owner: "DBAs", dependencies: [5], roadblocks: [7], status: "roadblocked", comments: "" },
-  { id: 7, name: "ITAPP19-SQL-P1 Migration", owner: "DBAs", dependencies: [6], roadblocks: [8], status: "roadblocked", comments: "" },
-  { id: 8, name: "Rauland Nurse Call Migration", owner: "Vendor", dependencies: [7], roadblocks: [10], status: "roadblocked", comments: "" },
-  { id: 9, name: "Data Warehouse Migration (11 servers)", owner: "Data Platform", dependencies: [6], roadblocks: [8], status: "roadblocked", comments: "" },
-  { id: 10, name: "Load balancing and firewall rules", owner: "Vendor", dependencies: [8], roadblocks: [], status: "not-started", comments: "" },
-  { id: 11, name: "Suncheck", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
+  { id: 3, name: "Veeam Migration (5 servers)", owner: "SysEng Infra", dependencies: [], roadblocks: [], status: "roadblocked", comments: "" },
+  { id: 4, name: "Cohesity Expansion", owner: "SysEng Infra", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
+  { id: 5, name: "NTP Migration", owner: "SysEng Ops", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
+  { id: 6, name: "SnapCenter Migration na-snpctr-p1", owner: "DBAs", dependencies: [], roadblocks: [], status: "roadblocked", comments: "" },
+  { id: 7, name: "ITAPP19-SQL-P1 Migration", owner: "DBAs", dependencies: [], roadblocks: [], status: "roadblocked", comments: "" },
+  { id: 8, name: "Rauland Nurse Call Migration", owner: "Vendor", dependencies: [], roadblocks: [], status: "roadblocked", comments: "" },
+  { id: 9, name: "Data Warehouse Migration (11 servers)", owner: "Data Platform", dependencies: [], roadblocks: [], status: "roadblocked", comments: "" },
+  { id: 10, name: "Load balancing and firewall rules", owner: "Vendor", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
   { id: 12, name: "CMS-Citrix", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
   { id: 13, name: "Cadstream", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
-  { id: 14, name: "Scobto", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
   { id: 15, name: "Saphyr", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
   { id: 16, name: "Sysmex", owner: "Clinical Lab", dependencies: [], roadblocks: [], status: "not-started", comments: "" },
-  { id: 17, name: "ELLink", owner: "Vendor", dependencies: [], roadblocks: [], status: "not-started", comments: "" }
 ];
 
 const owners = [
@@ -28,6 +25,7 @@ const owners = [
   "Data Platform",
   "Vendor",
   "Clinical Lab"
+  "RadIT"
 ];
 
 let network = null;
