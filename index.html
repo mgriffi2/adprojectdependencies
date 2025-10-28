@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Project Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>IT Project Management Dashboard</h1>
+            <p class="subtitle">Task Dependencies, Owners &amp; Roadblocks</p>
+        </header>
+
+        <div class="controls-section">
+            <div class="view-toggle">
+                <button class="btn btn--primary" id="flowchartViewBtn">Flowchart View</button>
+                <button class="btn btn--secondary" id="tableViewBtn">Table View</button>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label class="form-label">Filter by Owner:</label>
+                    <select class="form-control" id="ownerFilter">
+                        <option value="">All Owners</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="form-label">Filter by Status:</label>
+                    <select class="form-control" id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="not-started">Not Started</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="roadblocked">Roadblocked</option>
+                        <option value="complete">Complete</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="form-label">Show Roadblocked Only:</label>
+                    <input type="checkbox" id="roadblockedFilter" class="checkbox-input">
+                </div>
+            </div>
+        </div>
+
+        <div id="flowchartView" class="view-container active">
+            <div class="view-header">
+                <h2>Dependency Flowchart</h2>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: var(--color-bg-2);"></span>
+                        <span>Not Started</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: var(--color-bg-1);"></span>
+                        <span>In Progress</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: var(--color-bg-4);"></span>
+                        <span>Roadblocked</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: var(--color-bg-3);"></span>
+                        <span>Complete</span>
+                    </div>
+                </div>
+            </div>
+            <div id="flowchartNetwork"></div>
+        </div>
+
+        <div id="tableView" class="view-container">
+            <div class="view-header">
+                <h2>Task Management Table</h2>
+                <button class="btn btn--primary" id="addTaskBtn">+ Add New Task</button>
+            </div>
+            <div class="table-container">
+                <table class="task-table" id="taskTable">
+                    <thead>
+                        <tr>
+                            <th>Task Name</th>
+                            <th>Owner</th>
+                            <th>Dependencies</th>
+                            <th>Roadblocks</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for editing tasks -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Edit Task</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Task Name:</label>
+                    <input type="text" class="form-control" id="editTaskName">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Owner:</label>
+                    <select class="form-control" id="editTaskOwner">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status:</label>
+                    <select class="form-control" id="editTaskStatus">
+                        <option value="not-started">Not Started</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="roadblocked">Roadblocked</option>
+                        <option value="complete">Complete</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Dependencies (select multiple):</label>
+                    <div id="dependenciesCheckboxes" class="checkbox-group">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Roadblocks (select multiple):</label>
+                    <div id="roadblocksCheckboxes" class="checkbox-group">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Comments:</label>
+                    <textarea class="form-control" id="editTaskComments" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="cancelBtn">Cancel</button>
+                <button class="btn btn--primary" id="saveTaskBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
